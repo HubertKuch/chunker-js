@@ -4,5 +4,7 @@
   "main": "index.js",
   "type": "commonjs",
   "dependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
   }
 }
