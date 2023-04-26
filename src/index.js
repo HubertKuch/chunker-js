@@ -1,7 +1,6 @@
 "use strict";
 
-function Chunker() {
-}
+function Chunker() {}
 
 Object.assign(Chunker, {
     /**
@@ -28,3 +27,5 @@ Object.assign(Chunker, {
         return chunks;
     }
 });
+
+module.exports = Chunker;

@@ -1,1 +1,3 @@
-export * from "src/index";
+const Chunker = require("./src/index");
+
+module.exports = Chunker;
