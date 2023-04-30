@@ -1,25 +1,19 @@
 "use strict";
 
-function Chunker() {
-}
-
-Object.assign(Chunker, {
-    /**
-     * @param {Array} array
-     * @param value
-     * */
-    divideByValue(array, value) {
+class Chunker {
+    static divideByValue(array, value) {
         const indexesOfValue = [0];
 
         array.forEach((val, index) => val === value ? indexesOfValue.push(index) : undefined);
 
         return this.divideByIndexes(array, indexesOfValue);
-    },
+    }
+
     /**
      * @param {Array} arr
      *@param {(el: any) => boolean} callback
      * */
-    divideByCallback(arr, callback) {
+    static divideByCallback(arr, callback) {
         const indexes = [0];
 
         arr.forEach((el, index) => callback(el) ? indexes.push(index) : undefined);
@@ -27,12 +21,13 @@ Object.assign(Chunker, {
         indexes.push(arr.length);
 
         return this.divideByIndexes(arr, indexes);
-    },
+    }
+
     /**
-    * @param {Array} array
-    * @param {Array<number>} indexes
-    * */
-    divideByIndexes(array, indexes) {
+     * @param {Array} array
+     * @param {Array<number>} indexes
+     * */
+    static divideByIndexes(array, indexes) {
         const chunks = [];
 
         for (let index = 0; index < indexes.length; index++) {
@@ -47,6 +42,6 @@ Object.assign(Chunker, {
 
         return chunks;
     }
-});
+}
 
 module.exports = Chunker;
