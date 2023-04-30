@@ -1,6 +1,7 @@
 "use strict";
 
-function Chunker() {}
+function Chunker() {
+}
 
 Object.assign(Chunker, {
     /**
@@ -9,17 +10,37 @@ Object.assign(Chunker, {
      * */
     divideByValue(array, value) {
         const indexesOfValue = [0];
-        const chunks = [];
 
         array.forEach((val, index) => val === value ? indexesOfValue.push(index) : undefined);
 
-        for (let index = 0; index < indexesOfValue.length; index++) {
-            if (!indexesOfValue[index + 1]) {
+        return this.divideByIndexes(array, indexesOfValue);
+    },
+    /**
+     * @param {Array} arr
+     *@param {(el: any) => boolean} callback
+     * */
+    divideByCallback(arr, callback) {
+        const indexes = [0];
+
+        arr.forEach((el, index) => callback(el) ? indexes.push(index) : undefined);
+
+        indexes.push(arr.length);
+
+        return this.divideByIndexes(arr, indexes);
+    },
+    /**
+    * @param {Array} array
+    * @param {Array<number>} indexes
+    * */
+    divideByIndexes(array, indexes) {
+        const chunks = [];
+
+        for (let index = 0; index < indexes.length; index++) {
+            if (!indexes[index + 1]) {
                 break;
             }
 
-            const slice = array.slice(indexesOfValue[index], indexesOfValue[index + 1] ?? undefined)
-                .filter(fragment => fragment !== value);
+            const slice = array.slice(indexes[index], indexes[index + 1] ?? undefined);
 
             chunks.push(slice);
         }
