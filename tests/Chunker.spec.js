@@ -9,6 +9,8 @@ describe('Chunker test', function () {
 
         const chunks = Chunker.divideByValue(arr, SPLITER);
 
+        console.log(chunks)
+
         expect(chunks).is.a('array');
         expect(chunks[0]).is.a('array');
         expect(chunks.length).is.eq(2);

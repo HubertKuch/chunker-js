@@ -1,5 +1,6 @@
 {
-  "name": "array-chunk",
+  "name": "single-dimensionals-arrays-chunker",
+  "description": "Chunk single-dimensional arrays into multidimensional by callback, value etc",
   "version": "1.0.0",
   "main": "index.js",
   "type": "commonjs",
